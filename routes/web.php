@@ -6,6 +6,7 @@ use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\ResetPassword;
 use App\Http\Livewire\Billing;
+use App\Http\Livewire\CreateAccount;
 use App\Http\Livewire\UserAccount;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
@@ -56,6 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('static-sign-in', StaticSignIn::class)->name('static-sign-in');
     Route::get('static-sign-up', StaticSignUp::class)->name('static-sign-up');
     Route::get('rtl', RTL::class)->name('rtl');
-    Route::get('user-account', UserAccount::class);
+    Route::get('user-account', UserAccount::class)->name('user-account');
+    Route::get('create-account', CreateAccount::class)->name('create-account');
 });
 
