@@ -2,38 +2,41 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Database\QueryException;
 use Livewire\Component;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\SchoolPersonnel as SPersonnel;
 
 class SchoolPersonnel extends Component
 {
     public function render()
     {
-        $schoolpersonnel = SchoolPersonnel::get();
-        return view('livewire.school-personnel')->with('SchoolPersonnel', $schoolpersonnel);
-    }
-    /**
-     * @return \Illuminate\Http\Request;
-    */
-
-    /**
-     * Show the form for creating a new resource
-     *
-     * @return \Illuminate\Http\Response;
-     */
-    public function create()
-    {
-        //
+        $personnels = SPersonnel::get();
+        $data = compact('personnels');
+        return view('livewire.school-personnel', $data);
     }
 
-    /**
-     * Store a newly created resource in storage
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response;
-     */
     public function store(Request $request)
     {
-        //
+        try{
+            DB::transaction(function () use ($request){
+                SPersonnel::create([
+                    'userID' => $request->userID,
+                    'p_firstname' => $request->firstname,
+                    'p_midname' => $request->midname,
+                    'p_lastname' => $request->lastname,
+                    'p_sex' => $request->sex,
+                    'p_address' => $request->address,
+                    'p_cnumber'=> $request->cnumber,
+                    'p_position' => 'Faculty Member'
+                ]);
+            });
+            return back()->with('success', 'School Personnel Information added successfully');
+        }
+        catch(QueryException $e)
+        {
+            return back()->with('error', $e->getMessage());
+        }
     }
 }

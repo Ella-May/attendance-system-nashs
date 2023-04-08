@@ -66,6 +66,36 @@
                     <span class="nav-link-text ms-1">Create Account</span>
                 </a>
             </li>
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Information Management</h6>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'student-information' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('student-information') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">diversity_3</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Student Information</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'school-personnel' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('school-personnel') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">account_box</i>
+                    </div>
+                    <span class="nav-link-text ms-1">School Personnel</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'faculty-load' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('faculty-load') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">article</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Faculty Load</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'tables' ? ' active bg-gradient-primary' : '' }} "
                     href="{{ route('tables') }}">

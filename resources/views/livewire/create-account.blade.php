@@ -16,21 +16,21 @@
                         <form method="POST" action="{{ route('create-account.store') }}">
                             @csrf
                             <div class="mb-3 row">
-                                <label for="title" class="col col-form-label">First Name</label>
+                                <label for="firstname" class="col col-form-label">First Name</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="text" id="firstname"
                                         name="firstname">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="title" class="col col-form-label">Middle Name</label>
+                                <label for="midname" class="col col-form-label">Middle Name</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="text" id="midname"
                                         name="midname">
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="title" class="col col-form-label">Last Name</label>
+                                <label for="lastname" class="col col-form-label">Last Name</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="text" id="lastname"
                                         name="lastname">
@@ -46,7 +46,7 @@
                             <div class="mb-3 row">
                                 <label class="col col-form-label" for="formFile">Sex</label>
                                 <div class="col-md-10">
-                                    <select id="position" class="form-select border px-2" name="sex">
+                                    <select id="sex" class="form-select border px-2" name="sex">
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>
