@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('userID')->constrained('users');
             $table->string('p_firstname');
+            $table->string('p_midname')->nullable();
             $table->string('p_lastname');
-            $table->string('p_midname');
             $table->enum('p_sex', ['Male', 'Female']);
-            $table->string('p_address');
-            $table->string('p_cnumber');
-            $table->enum('p_position', ['Security Personnel', 'Faculty Member', 'Clinician', 'School Registrar', 'Principal']);
+            $table->string('p_address')->nullable();
+            $table->string('p_cnumber')->nullable();
+            $table->enum('p_position', ['Security Personnel', 'Faculty Member', 'Clinician', 'School Registrar', 'Principal'])->nullable();
             $table->timestamps();
         });
     }

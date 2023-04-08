@@ -59,5 +59,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('rtl', RTL::class)->name('rtl');
     Route::get('user-account', UserAccount::class)->name('user-account');
     Route::get('create-account', CreateAccount::class)->name('create-account');
+    Route::post('create-account', [CreateAccount::class, 'store'])->name('create-account.store');
 });
 
