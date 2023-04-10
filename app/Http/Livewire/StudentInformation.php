@@ -17,6 +17,7 @@ class StudentInformation extends Component
         $students = StudentInfo::get();
         $data = compact('students');
         return view('livewire.student-information', $data);
+
     }
 
     public function store(Request $request)
@@ -46,5 +47,10 @@ class StudentInformation extends Component
         {
             return back()->with('error', $e->getMessage());
         }
+    }
+
+    public function show($id)
+    {
+        return view('livewire.student-information');
     }
 }

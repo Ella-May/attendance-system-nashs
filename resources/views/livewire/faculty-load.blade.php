@@ -29,6 +29,9 @@
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Subject Time
                                         </th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Action
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,92 +53,26 @@
                                                 <td class="align-middle text-center text-sm">
                                                     <p class="text-xs font-weight-bold mb-0">{{ $subject->sub_timestart.' - '.$subject->sub_timeend }}</p>
                                                 </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <div class="ms-auto text-end">
+                                                        <a class="btn btn-link text-info px-1 mb-0" href="javascript:;">
+                                                            <i class="material-icons text-sm">visibility</i>
+                                                            View
+                                                        </a>
+                                                        <a class="btn btn-link text-dark px-1 mb-0" href="{{ route('faculty-load.edit', ['id' => $subject->id ]) }}">
+                                                            <i class="material-icons text-sm">edit</i>
+                                                            Edit
+                                                        </a>
+                                                        <a class="btn btn-link text-danger text-gradient px-1 mb-0" href="javascript:;">
+                                                            <i class="material-icons text-sm">delete</i>Delete</a>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         @endisset
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Add Faculty Load -->
-    <div class="container">
-        <div class="row">
-            <div class="ms-auto me-auto ms-lg-auto me-lg-5">
-                <div class="card card-plain">
-                    <div class="card-body">
-                        @if (session('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('success') }}
-                            </div>
-                        @Elseif(session('error'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                        <form method="POST" action="{{ route('faculty-load.store') }}">
-                            @csrf
-                            <div class="mb-3 row">
-                                <label for="subname" class="col col-form-label">Subject Name</label>
-                                <div class="col-md-10">
-                                    <input class="form-control border px-2" type="text" id="subname"
-                                        name="subname">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label class="col col-form-label" for="formFile">Grade Level</label>
-                                <div class="col-md-10">
-                                    <select id="subgradelvl" class="form-select border px-2" name="subgradelvl">
-                                        <option value="Grade 11">Grade 11</option>
-                                        <option value="Grade 12">Grade 12</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="substrand" class="col col-form-label">Strand</label>
-                                <div class="col-md-10">
-                                    <input class="form-control border px-2" type="text" id="substrand" name="substrand">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="subsection" class="col col-form-label">Section</label>
-                                <div class="col-md-10">
-                                    <input class="form-control border px-2" type="text" id="subsection" name="subsection">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label class="col col-form-label" for="formFile">Day</label>
-                                <div class="col-md-10">
-                                    <select id="subday" class="form-select border px-2" name="subday">
-                                        <option value="Monday">Monday</option>
-                                        <option value="Tuesday">Tuesday</option>
-                                        <option value="Wednesday">Wednesday</option>
-                                        <option value="Thursday">Thursday</option>
-                                        <option value="Friday">Friday</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="subtimestart" class="col col-form-label">Subject Time Start</label>
-                                <div class="col-md-10">
-                                    <input class="form-control border px-2" type="time" id="subtimestart"
-                                        name="subtimestart">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="subtimeend" class="col col-form-label">Subject Time End</label>
-                                <div class="col-md-10">
-                                    <input class="form-control border px-2" type="time" id="subtimeend"
-                                        name="subtimeend">
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">
-                                Submit
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>

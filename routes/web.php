@@ -8,8 +8,10 @@ use App\Http\Livewire\Auth\ResetPassword;
 use App\Http\Livewire\Billing;
 use App\Http\Livewire\CreateAccount;
 use App\Http\Livewire\FacultyLoad;
+use App\Http\Livewire\FacultyLoadEdit;
 use App\Http\Livewire\SchoolPersonnel;
 use App\Http\Livewire\StudentInformation;
+use App\Http\Livewire\StudentInformationEdit;
 use App\Http\Livewire\UserAccount;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
@@ -64,10 +66,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('create-account', CreateAccount::class)->name('create-account');
     Route::post('create-account', [CreateAccount::class, 'store'])->name('create-account.store');
     Route::get('student-information', StudentInformation::class)->name('student-information');
+    Route::get('student-information/{id}', StudentInformationEdit::class)->name('student-information.edit');
     Route::post('student-information', [StudentInformation::class, 'store'])->name('student-information.store');
     Route::get('school-personnel', SchoolPersonnel::class)->name('school-personnel');
     Route::post('school-personnel', [SchoolPersonnel::class, 'store'])->name('school-personnel.store');
     Route::get('faculty-load', FacultyLoad::class)->name('faculty-load');
+    Route::get('faculty-load/{id}', FacultyLoadEdit::class)->name('faculty-load.edit');
     Route::post('faculty-load', [FacultyLoad::class, 'store'])->name('faculty-load.store');
 });
 
