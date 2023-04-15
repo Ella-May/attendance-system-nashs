@@ -13,6 +13,7 @@ class FacultyLoadEdit extends Component
     public function mount($id)
     {
         $facultyLoad = FacultyLoad::where('id', $id)->first();
+        $this->subID = $facultyLoad->id;
         $this->subname = $facultyLoad->sub_name;
         $this->subgradelvl = $facultyLoad->sub_gradelvl;
         $this->substrand = $facultyLoad->sub_strand;
@@ -37,7 +38,7 @@ class FacultyLoadEdit extends Component
                 'sub_timeend' => $this->subtimeend
                 ]
             );
-            return back()->with('success', 'Faculty Load updated successfully');
+            return redirect()->route('faculty-load')->with('success', 'Faculty Load updated successfully!');
         }
         catch(QueryException $e)
         {

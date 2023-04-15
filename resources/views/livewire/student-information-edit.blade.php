@@ -4,15 +4,6 @@
             <div class="ms-auto me-auto ms-lg-auto me-lg-5">
                 <div class="card card-plain">
                     <div class="card-body">
-                        @if (session('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('success') }}
-                            </div>
-                        @Elseif(session('error'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ session('error') }}
-                            </div>
-                        @endif
                         <form wire:submit.prevent=updateStudInfo>
                             @csrf
                             <div class="mb-3 row">
