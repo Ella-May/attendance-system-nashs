@@ -67,6 +67,38 @@
                 </a>
             </li>
             <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Transaction Process</h6>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'qrcode-scanner' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('qrcode-scanner') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">qr_code_scanner</i>
+                    </div>
+                    <span class="nav-link-text ms-1">QR Code Scanner</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'qrcode-generator' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('qrcode-generator') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">qr_code</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Student QR Code Generator</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'attendance-report' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('attendance-report') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">text_snippet
+
+                        </i>
+                    </div>
+                    <span class="nav-link-text ms-1">Attendance Report</span>
+                </a>
+            </li>
+            <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Information Management</h6>
             </li>
             <li class="nav-item">

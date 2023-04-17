@@ -50,7 +50,7 @@ class StudentInformationEdit extends Component
                 's_age' => $this->age,
                 's_sex' => $this->sex]
             );
-            return back()->with('success', 'Student Information updated successfully');
+            return redirect()->route('student-information')->with('success', 'Student Information updated successfully!');
         }
         catch(QueryException $e)
         {

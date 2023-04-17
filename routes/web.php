@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Livewire\AttendanceReport;
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\Register;
@@ -9,9 +10,11 @@ use App\Http\Livewire\Billing;
 use App\Http\Livewire\CreateAccount;
 use App\Http\Livewire\FacultyLoad;
 use App\Http\Livewire\FacultyLoadEdit;
+use App\Http\Livewire\QRCodeScanner;
 use App\Http\Livewire\SchoolPersonnel;
 use App\Http\Livewire\StudentInformation;
 use App\Http\Livewire\StudentInformationEdit;
+use App\Http\Livewire\StuQRCodeGenerator;
 use App\Http\Livewire\UserAccount;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
@@ -73,5 +76,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('faculty-load', FacultyLoad::class)->name('faculty-load');
     Route::get('faculty-load/{id}', FacultyLoadEdit::class)->name('faculty-load.edit');
     Route::post('faculty-load', [FacultyLoad::class, 'store'])->name('faculty-load.store');
+    Route::get('attendance-report', AttendanceReport::class)->name('attendance-report');
+    Route::get('qrcode-generator', StuQRCodeGenerator::class)->name('qrcode-generator');
+    Route::get('qrcode-scanner', QRCodeScanner::class)->name('qrcode-scanner');
 });
 
