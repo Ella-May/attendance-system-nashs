@@ -44,7 +44,7 @@ class FacultyLoad extends Component
     public function delete($id)
     {
         $subject = Fload::where('id', $id)->first();
-        $subject = delete();
+        $subject->delete();
 
         session()->flash('message', 'Faculty Load has been deleted successfully');
     }

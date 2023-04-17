@@ -52,7 +52,7 @@ class StudentInformation extends Component
     public function delete($id)
     {
         $student = StudentInfo::where('id', $id)->first();
-        $student = delete();
+        $student->delete();
 
         session()->flash('message', 'Student Information has been deleted successfully');
     }
