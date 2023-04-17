@@ -73,7 +73,7 @@
                                                             <i class="material-icons text-sm">edit</i>
                                                             Edit
                                                         </a>
-                                                        <a class="btn btn-link text-danger text-gradient px-1 mb-0" wire:click="delete({{ $student->id }})"">
+                                                        <a class="btn btn-link text-danger text-gradient px-1 mb-0" href="javascript:;" wire:click="delete({{ $student->id }})"">
                                                             <i class="material-icons text-sm">delete</i>Delete</a>
                                                     </div>
                                                 </td>
