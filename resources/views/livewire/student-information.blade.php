@@ -18,6 +18,134 @@
                             <h6 class="text-white text-capitalize ps-3">Student Information Table</h6>
                         </div>
                     </div>
+                    <!-- Modal -->
+                    <div class=" me-3 my-3 text-end">
+                        <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <i class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New Student
+                        </button>
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalCenterTitle">Add Student Information</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <form method="POST" id="studentInformationForm" action="{{ route('student-information.store') }}">
+                                            @csrf
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="lrn" class="row form-label">Learner's Reference No.</label>
+                                                    <input class="form-control border px-2" type="text" id="lrn"
+                                                        name="lrn" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="firstname" class="row form-label">First Name</label>
+                                                    <input class="form-control border px-2" type="text" id="firstname"
+                                                        name="firstname" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="midname" class="row form-label">Middle Name</label>
+                                                    <input class="form-control border px-2" type="text" id="midname"
+                                                        name="midname">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="lastname" class="row form-label">Last Name</label>
+                                                    <input class="form-control border px-2" type="text" id="lastname" name="lastname" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="address" class="row form-label">Address</label>
+                                                    <input class="form-control border px-2" type="text" id="address"
+                                                        name="address" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label class="row form-label" for="sex">Sex</label>
+                                                    <select id="sex" class="form-select border px-2 text-dark" name="sex" required>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="snumber" class="row form-label">Student Contact No.</label>
+                                                    <input class="form-control border px-2" type="text" id="snumber"
+                                                        name="snumber" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="gname" class="row form-label">Guardian Name</label>
+                                                    <input class="form-control border px-2" type="text" id="gname"
+                                                        name="gname" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="gnumber" class="row form-label">Guardian Contact No.</label>
+                                                    <input class="form-control border px-2" type="text" id="gnumber"
+                                                        name="gnumber" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label class="row form-label" for="sex">Grade Level</label>
+                                                    <select id="gradelvl" class="form-select border px-2" name="gradelvl" required>
+                                                        <option value="Grade 11">Grade 11</option>
+                                                        <option value="Grade 12">Grade 12</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="strand" class="row form-label">Strand</label>
+                                                    <select id="strand" class="form-select border px-2" name="strand" required>
+                                                        <option value="Accountancy, Business and Management">Accountancy, Business and Management</option>
+                                                        <option value="General Academic Strand">General Academic Strand</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="section" class="row form-label">Section</label>
+                                                    <input class="form-control border px-2" type="text" id="section"
+                                                        name="section" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="bday" class="row form-label">Birthday</label>
+                                                    <input class="form-control border px-2" type="date" id="bday"
+                                                        name="bday" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="form-group">
+                                                    <label for="age" class="row form-label">Age</label>
+                                                    <input class="form-control border px-2" type="text" id="age"
+                                                        name="age" required>
+                                                </div>
+                                            </div>
+                                        </form>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="submit" form="studentInformationForm" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
                     <div class="card-body pb-2">
                         <div class="row">
                             <div class="col-12">

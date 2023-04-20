@@ -34,40 +34,43 @@
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                            <form wire:submit.prevent=updateFacultyLoad>
+                                            <form method="POST" action="{{ route('faculty-load.store') }}" id="facultyLoadForm">
                                                 @csrf
                                                 <div class="mb-3 row">
-                                                    <label for="subname" class="col col-form-label">Subject Name</label>
-                                                    <div class="col-md-10">
+                                                    <div class="form-group">
+                                                        <label for="subname" class="row form-label">Subject Name</label>
                                                         <input class="form-control border px-2" type="text" id="subname"
-                                                            name="subname" wire:model="subname">
+                                                            name="subname" required>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 row">
-                                                    <label class="col col-form-label" for="formFile">Grade Level</label>
-                                                    <div class="col-md-10">
-                                                        <select id="subgradelvl" class="form-select border px-2" name="subgradelvl" wire:model="subgradelvl">
+                                                    <div class="form-group">
+                                                        <label class="row form-label" for="subgradelvl">Grade Level</label>
+                                                        <select id="subgradelvl" class="form-select border px-2" name="subgradelvl" required>
                                                             <option value="Grade 11">Grade 11</option>
                                                             <option value="Grade 12">Grade 12</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 row">
-                                                    <label for="substrand" class="col col-form-label">Strand</label>
-                                                    <div class="col-md-10">
-                                                        <input class="form-control border px-2" type="text" id="substrand" name="substrand" wire:model="substrand">
+                                                    <div class="form-group">
+                                                        <label for="substrand" class="row form-label">Strand</label>
+                                                        <select id="substrand" class="form-select border px-2" name="substrand" required>
+                                                            <option value="Accountancy, Business and Management">Accountancy, Business and Management</option>
+                                                            <option value="General Academic Strand">General Academic Strand</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 row">
-                                                    <label for="subsection" class="col col-form-label">Section</label>
-                                                    <div class="col-md-10">
-                                                        <input class="form-control border px-2" type="text" id="subsection" name="subsection" wire:model="subsection">
+                                                    <div class="form-group">
+                                                        <label for="subsection" class="row form-label">Section</label>
+                                                        <input class="form-control border px-2" type="text" id="subsection" name="subsection" required>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 row">
-                                                    <label class="col col-form-label" for="formFile">Day</label>
-                                                    <div class="md-10">
-                                                        <select id="subday" class="form-select border px-2" name="subday" wire:model="subday">
+                                                    <div class="form-group">
+                                                        <label class="row form-label" for="subday">Day</label>
+                                                        <select id="subday" class="form-select border px-2" name="subday" required>
                                                             <option value="Monday">Monday</option>
                                                             <option value="Tuesday">Tuesday</option>
                                                             <option value="Wednesday">Wednesday</option>
@@ -77,23 +80,23 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 row">
-                                                    <label for="subtimestart" class="col col-form-label">Subject Time Start</label>
-                                                    <div class="md-10">
+                                                    <div class="form-group">
+                                                        <label for="subtimestart" class="row form-label">Subject Time Start</label>
                                                         <input class="form-control border px-2" type="time" id="subtimestart"
-                                                            name="subtimestart" wire:model="subtimestart">
+                                                            name="subtimestart" required>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="subtimeend" class="col col-form-label">Subject Time End</label>
-                                                    <div class="col-md-10">
+                                                    <div class="form-group">
+                                                        <label for="subtimeend" class="row form-label">Subject Time End</label>
                                                         <input class="form-control border px-2" type="time" id="subtimeend"
-                                                            name="subtimeend" wire:model="subtimeend">
+                                                            name="subtimeend" required>
                                                     </div>
                                                 </div>
                                             </form>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                      <button type="button" class="btn btn-primary">Submit</button>
+                                      <button type="submit" form="facultyLoadForm" class="btn btn-primary">Submit</button>
                                     </div>
                               </div>
                             </div>
@@ -104,10 +107,10 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Subject Name
                                         </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Strand
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -128,7 +131,7 @@
                                         @isset($subjects)
                                             @foreach ($subjects as $subject)
                                             <tr>
-                                                <td>
+                                                <td class="align-middle text-center text-sm">
                                                     <p class="text-xs font-weight-bold mb-0">{{ $subject->sub_name }}</p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 class StudentInformation extends Component
 {
+    public $lrn;
     public function render()
     {
         $students = StudentInfo::get();
