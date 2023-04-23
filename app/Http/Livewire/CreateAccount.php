@@ -33,7 +33,7 @@ class CreateAccount extends Component
                     'p_midname' => $request->midname,
                     'p_lastname' => $request->lastname,
                     'p_sex' => $request->sex,
-                    'p_position' => 'Security Personnel'
+                    'p_position' => $request->position
                 ]);
             });
             return back()->with('success', 'Account created');

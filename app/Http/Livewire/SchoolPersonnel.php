@@ -29,7 +29,7 @@ class SchoolPersonnel extends Component
                     'p_sex' => $request->sex,
                     'p_address' => $request->address,
                     'p_cnumber'=> $request->cnumber,
-                    'p_position' => 'Faculty Member'
+                    'p_position' => $request->position
                 ]);
             });
             return back()->with('success', 'School Personnel Information added successfully');

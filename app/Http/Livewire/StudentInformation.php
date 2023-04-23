@@ -12,13 +12,11 @@ use Illuminate\Http\Request;
 
 class StudentInformation extends Component
 {
-    public $lrn;
     public function render()
     {
         $students = StudentInfo::get();
         $data = compact('students');
         return view('livewire.student-information', $data);
-
     }
 
     public function store(Request $request)

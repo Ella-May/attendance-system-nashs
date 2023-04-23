@@ -19,7 +19,7 @@
                                 <label for="firstname" class="col col-form-label">First Name</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="text" id="firstname"
-                                        name="firstname">
+                                        name="firstname" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -33,20 +33,33 @@
                                 <label for="lastname" class="col col-form-label">Last Name</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="text" id="lastname"
-                                        name="lastname">
+                                        name="lastname" required>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="address" class="col col-form-label">Address</label>
+                                <div class="col-md-10">
+                                    <input class="form-control border px-2" type="text" id="address"
+                                        name="address" required>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="cnumber" class="col col-form-label">Contact No.</label>
+                                <div class="col-md-10">
+                                    <input class="form-control border px-2" type="text" id="cnumber" name="cnumber">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="email" class="col col-form-label">Email</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="email" id="email"
-                                        name="email">
+                                        name="email" required>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label class="col col-form-label" for="formFile">Sex</label>
                                 <div class="col-md-10">
-                                    <select id="sex" class="form-select border px-2" name="sex">
+                                    <select id="sex" class="form-select border px-2" name="sex" required>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>
@@ -55,15 +68,14 @@
                             <div class="mb-3 row">
                                 <label class="col col-form-label" for="formFile">Position</label>
                                 <div class="col-md-10">
-                                    <select id="position" class="form-select border px-2" name="position">
+                                    <select id="position" class="form-select border px-2" name="position" required>
                                         <option>Open this select menu</option>
-                                        @isset($roles)
-                                            @foreach ($roles as $role)
-                                                <option value="{{ $role->id }}">
-                                                    <span>{{ Str::ucfirst($role->name) }}</span>
-                                                </option>
-                                            @endforeach
-                                        @endisset
+                                        <option value="Faculty Member">Faculty Member</option>
+                                        <option value="Security Personnel">Security Personnel</option>
+                                        <option value="Clinician">Clinician</option>
+                                        <option value="Principal">Principal</option>
+                                        <option value="School Registrar">School Registrar</option>
+                                        <option value="Admin">Admin</option>
                                     </select>
                                 </div>
                             </div>

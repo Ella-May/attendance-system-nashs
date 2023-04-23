@@ -10,6 +10,8 @@
                 <div class="alert alert-danger" role="alert">
                     {{ session('error') }}
                 </div>
+            @Elseif (session()->has('message'))
+                <div class="alert alert-success text-center">{{ session('message') }}</div>
             @endif
             <div class="col-12">
                 <div class="card my-4">
@@ -147,13 +149,6 @@
                     </div>
                 </div>
                     <div class="card-body pb-2">
-                        <div class="row">
-                            <div class="col-12">
-                                @if (session()->has('message'))
-                                <div class="alert alert-success text-center">{{ session('message') }}</div>
-                                @endif
-                            </div>
-                        </div>
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -201,8 +196,30 @@
                                                             <i class="material-icons text-sm">edit</i>
                                                             Edit
                                                         </a>
-                                                        <a class="btn btn-link text-danger text-gradient px-1 mb-0" href="javascript:;" wire:click="delete({{ $student->id }})"">
-                                                            <i class="material-icons text-sm">delete</i>Delete</a>
+                                                        <button type="button" class="btn btn-link text-danger text-gradient px-1 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            <i class="material-icons text-sm">delete</i>Delete</button>
+                                                        </div>
+                                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                              <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"><i class="material-icons text-m py-2">warning</i> Are you sure do you want to delete?</h5>
+                                                                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                  </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p class="text-m font-weight-bold mb-0" id="del_items_label">LRN: {{ $student->lrn }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="del_items_label">Name: {{ $student->s_lastname.', '.$student->s_firstname.' '.$student->s_midname }}</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                  <a class="btn btn-link text-dark text-gradient px-1 mb-0" data-bs-dismiss="modal">Close</a>
+                                                                  <a class="btn btn-link text-danger text-gradient px-1 mb-0" wire:click="delete({{ $student->id }})"">
+                                                                    Delete</a>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -217,3 +234,6 @@
         </div>
     </div>
 </div>
+
+
+

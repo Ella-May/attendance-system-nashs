@@ -10,7 +10,7 @@
                                 <label for="lrn" class="col col-form-label">Learner's Reference No.</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="text" id="lrn"
-                                        name="lrn">
+                                        name="lrn" wire:model="lrn" disabled>
                                 </div>
                             </div>
                             <div class="mb-3 row">

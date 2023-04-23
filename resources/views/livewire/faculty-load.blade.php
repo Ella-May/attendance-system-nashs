@@ -107,7 +107,7 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        <th class="text-center align-middle text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">
                                             Subject Name
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -156,9 +156,29 @@
                                                             <i class="material-icons text-sm">edit</i>
                                                             Edit
                                                         </a>
-                                                        <a class="btn btn-link text-danger text-gradient px-1 mb-0" href="javascript:;" wire:click="delete({{ $subject->id }})">
-                                                            <i class="material-icons text-sm">delete</i>Delete</a>
-                                                    </div>
+                                                        <button type="button" class="btn btn-link text-danger text-gradient px-1 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            <i class="material-icons text-sm">delete</i>Delete</button>
+                                                        </div>
+                                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                              <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"><i class="material-icons text-m py-2">warning</i> Are you sure do you want to delete?</h5>
+                                                                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                  </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p class="text-m font-weight-bold mb-0" id="del_items_label">Subject Name: {{ $subject->sub_name }}</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                  <a class="btn btn-link text-dark text-gradient px-1 mb-0" data-bs-dismiss="modal">Close</a>
+                                                                  <a class="btn btn-link text-danger text-gradient px-1 mb-0" wire:click="delete({{ $subject->id }})"">
+                                                                    Delete</a>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                        </div>
                                                 </td>
                                             </tr>
                                             @endforeach
