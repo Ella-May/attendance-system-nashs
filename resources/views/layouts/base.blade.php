@@ -98,7 +98,7 @@
             formData.append('time', Date.now());
             formData.append('lrn', content);
 
-            fetch('http://attendance-system-nashs.test/attendance-report', {
+            fetch('https://attendance-system-nashs.test/attendance-report', {
                 method: "POST",
                 headers: {
                     "X-CSRF-TOKEN": csrf,

@@ -82,6 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('attendance-report', [AttendanceReport::class, 'store'])->name('attendance-report.store');
     Route::get('qrcode-generator', StuQRCodeGenerator::class)->name('qrcode-generator');
     Route::get('qrcode-generator/{id}', StuQRCodeGeneratorShow::class)->name('qrcode-generator.show');
+    Route::get('qrcode-generator/{id}/download', [StuQRCodeGeneratorShow::class, 'download'])->name('qrcode-generator.download');
     Route::get('qrcode-scanner', QRCodeScanner::class)->name('qrcode-scanner');
     // Route::get('qrcode', function(){ return QrCode::size(200)->generate('A basic example of Qr Code'); });
 });
