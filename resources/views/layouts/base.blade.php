@@ -17,6 +17,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png">
     <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/favicon.png">
     <title>
@@ -57,6 +58,7 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('assets') }}/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    {{-- <script type="text/javascript" src="instascan.min.js"></script> --}}
     @livewireStyles
 </head>
 <body class="g-sidenav-show {{ Route::currentRouteName() == 'rtl' ? 'rtl' : '' }} {{ Route::currentRouteName() == 'register' || Route::currentRouteName() == 'static-sign-up'  ? '' : 'bg-gray-200' }}">
@@ -67,6 +69,7 @@
 <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
 <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="{{ asset('assets') }}/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="{{ asset('assets') }}/js/instascan/instascan.min.js"></script>
 @stack('js')
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
@@ -78,10 +81,51 @@
     }
 
 </script>
+
+<script>
+    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    const csrf = document.querySelector('meta[name="csrf-token"]').content;
+
+    const buttonScanner = document.getElementById('scan');
+
+    buttonScanner.addEventListener('click', function() {
+        // If the camera scan the QR Code this will run
+        scanner.addListener('scan', function (content) {
+            console.log(content);
+
+            // Request
+            let formData = new FormData();
+            formData.append('time', Date.now());
+            formData.append('lrn', content);
+
+            fetch('http://attendance-system-nashs.test/attendance-report', {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": csrf,
+                },
+                body: formData
+            })
+        });
+
+        // This will start the camera
+        Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('No cameras found.');
+        }
+        }).catch(function (e) {
+            console.error(e);
+        });
+    })
+
+</script>
+
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{{ asset('assets') }}/js/material-dashboard.min.js?v=3.0.0"></script>
 @livewireScripts
+
 </body>
 </html>

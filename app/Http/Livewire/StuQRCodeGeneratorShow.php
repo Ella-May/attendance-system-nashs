@@ -19,7 +19,7 @@ class StuQRCodeGeneratorShow extends Component
 
     public function render()
     {
-        $qrcode = QrCode::size(100)->generate($this->lrn);
+        $qrcode = QrCode::size(300)->generate($this->lrn);
         $data = compact('qrcode');
         return view('livewire.stu-q-r-code-generator-show', $data);
     }
