@@ -33,7 +33,7 @@ class StuQRCodeGeneratorShow extends Component
         $this->studentID = $studInfo->id;
         $this->lrn = $studInfo->lrn;
 
-        $imageName  = 'qr-code';
+        $imageName  = strtolower(str_replace(' ', '-', $studInfo->s_firstname)).'-'.strtolower($studInfo->s_lastname).'-'.'qr-code';
         $headers    = array('Content-Type' => ['png','svg','eps']);
         $type       = 'png';
         $image      = QrCode::format('png')
