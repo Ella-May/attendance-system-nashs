@@ -188,18 +188,47 @@
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <div class="ms-auto text-end">
-                                                        <a class="btn btn-link text-info px-1 mb-0" href="javascript:;">
+                                                        <button  type="button" class="btn btn-link text-info px-1 mb-0"  data-bs-toggle="modal" data-bs-target="#viewModal{{ $student->id }}">
                                                             <i class="material-icons text-sm">visibility</i>
                                                             View
-                                                        </a>
+                                                        </button>
+                                                        <div class="modal fade" id="viewModal{{ $student->id }}" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                              <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"><i class="material-icons text-m py-2">info</i> Student Information</h5>
+                                                                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                  </button>
+                                                                </div>
+                                                                <div class="modal-body text-align-left">
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">LRN: {{ $student->lrn }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Name: {{ $student->s_lastname.', '.$student->s_firstname.' '.$student->s_midname }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Sex: {{ $student->s_sex }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Address: {{ $student->s_address }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Student Contact Number: {{ $student->s_cnumber }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Guardian Name: {{ $student->g_name }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Guardian Contact Number: {{ $student->g_number }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Grade Level: {{ $student->s_gradelvl}}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Strand: {{ $student->s_strand }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Section: {{ $student->s_section }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Birthday: {{ $student->s_bday }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Age: {{ $student->s_age }}</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                  <a class="btn btn-link text-dark text-gradient px-1 mb-0" data-bs-dismiss="modal">Close</a>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                        </div>
                                                         <a class="btn btn-link text-dark px-1 mb-0" href="{{ route('student-information.edit', ['id' => $student->id ]) }}">
                                                             <i class="material-icons text-sm">edit</i>
                                                             Edit
                                                         </a>
-                                                        <button type="button" class="btn btn-link text-danger text-gradient px-1 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        <button type="button" class="btn btn-link text-danger text-gradient px-1 mb-0" data-bs-toggle="modal" data-bs-target="#delModal{{ $student->id }}">
                                                             <i class="material-icons text-sm">delete</i>Delete</button>
                                                         </div>
-                                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="delModal{{ $student->id }}" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                               <div class="modal-content">
                                                                 <div class="modal-header">
@@ -219,7 +248,7 @@
                                                                 </div>
                                                               </div>
                                                             </div>
-                                                          </div>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>

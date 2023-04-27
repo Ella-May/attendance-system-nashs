@@ -10,28 +10,28 @@
                                 <label for="lrn" class="col col-form-label">Learner's Reference No.</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="text" id="lrn"
-                                        name="lrn" wire:model="lrn" disabled>
+                                        name="lrn" wire:model="lrn">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="firstname" class="col col-form-label">First Name</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="text" id="firstname"
-                                        name="firstname" wire:model="firstname" disabled>
+                                        name="firstname" wire:model="firstname">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="midname" class="col col-form-label">Middle Name</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="text" id="midname"
-                                        name="midname" wire:model="midname" disabled>
+                                        name="midname" wire:model="midname">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="lastname" class="col col-form-label">Last Name</label>
                                 <div class="col-md-10">
                                     <input class="form-control border px-2" type="text" id="lastname"
-                                        name="lastname" wire:model="lastname" disabled>
+                                        name="lastname" wire:model="lastname">
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -44,7 +44,7 @@
                             <div class="mb-3 row">
                                 <label class="col col-form-label" for="formFile">Sex</label>
                                 <div class="col-md-10">
-                                    <select id="sex" class="form-select border px-2 text-dark" name="sex" wire:model="sex" disabled>
+                                    <select id="sex" class="form-select border px-2 text-dark" name="sex" wire:model="sex">
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>

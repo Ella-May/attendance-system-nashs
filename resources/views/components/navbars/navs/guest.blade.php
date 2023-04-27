@@ -1,12 +1,10 @@
 
-<nav
-    class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
     <div class="container-fluid ps-2 pe-0">
-        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 d-flex flex-column" href="{{ route('dashboard') }}">
+        {{-- <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 d-flex flex-column" href="{{ route('dashboard') }}">
             Material Dashboard 2
             <span>Laravel Livewire</span>
-        </a>
-        <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+        </a> --}}
+        {{-- <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
             data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon mt-2">
@@ -14,7 +12,7 @@
                 <span class="navbar-toggler-bar bar2"></span>
                 <span class="navbar-toggler-bar bar3"></span>
             </span>
-        </button>
+        </button> --}}
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav mx-auto">
                 @auth
@@ -32,7 +30,7 @@
                     </a>
                 </li>
                 @endauth
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link me-2" href="{{ in_array(request()->route()->getName(), ['register','login', 'password.forgot','reset-password']) ? route('register') : 'static-sign-up' }}">
                         <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
                         Sign Up
@@ -50,7 +48,6 @@
                     <a href="https://www.creative-tim.com/product/material-dashboard-laravel-livewire"
                         class="btn btn-sm mb-0 me-1 bg-gradient-dark" target="_blank">Free download</a>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
     </div>
-</nav>
