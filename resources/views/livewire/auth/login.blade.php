@@ -1,4 +1,3 @@
-
             <div class="container my-auto mt-5">
                 <div class="row signin-margin">
                     <div class="col-lg-4 col-md-8 col-12 mx-auto">
@@ -7,10 +6,6 @@
                                 <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                                     <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Sign in</h4>
                                     <div class="row mt-3">
-                                        {{-- <h6 class='text-white text-center'>
-                                            <span class="font-weight-normal">Email:</span> admin@material.com
-                                            <br>
-                                            <span class="font-weight-normal">Password:</span> secret</h6> --}}
                                         <div class="col-2 text-center ms-auto">
                                             <a class="btn btn-link px-3" href="javascript:;">
                                                 <i class="fa fa-facebook text-white text-lg"></i>
@@ -50,8 +45,7 @@
 
                                     <div class="input-group input-group-outline mt-3 @if(strlen($password ?? '') > 0) is-filled @endif">
                                         <label class="form-label">Password</label>
-                                        <input wire:model="password" type="password" class="form-control"
-                                             >
+                                        <input wire:model="password" type="password" class="form-control">
                                     </div>
                                     @error('password')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
@@ -62,7 +56,7 @@
                                             me</label>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign
+                                        <button type="submit" id="signIn" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign
                                             in</button>
                                     </div>
                                 </form>

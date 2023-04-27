@@ -65,11 +65,11 @@
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     const csrf = document.querySelector('meta[name="csrf-token"]').content;
 
-    const buttonScanner = document.getElementById('scan');
+    const buttonScanner = document.getElementById('scanQR');
 
     buttonScanner.addEventListener('click', function() {
         // If the camera scan the QR Code this will run
-        scanner.addListener('scan', function (content) {
+        scanner.addListener('scanQR', function (content) {
             console.log(content);
 
             // Request

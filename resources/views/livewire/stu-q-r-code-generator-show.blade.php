@@ -1,6 +1,4 @@
 <div>
-    {{-- <embed type="text/html" src="{{ $qrcode }}"> --}}
-
     <div class="card me-4 pb-0">
         <div class="card-header pb-0 px-3">
             <h6>Generated QR Code</h6>
@@ -39,6 +37,4 @@
             </div>
         </div>
     </div>
-
-
 </div>

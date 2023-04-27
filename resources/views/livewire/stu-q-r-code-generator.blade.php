@@ -35,8 +35,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        @isset($students)
-                                            @foreach ($students as $student)
+                                    @isset($students)
+                                        @foreach ($students as $student)
                                             <tr>
                                                 <td>
                                                     <p class="text-xs font-weight-bold mb-0">{{ $student->id }}</p>
@@ -55,18 +55,15 @@
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <div class="ms-auto text-end">
-                                                        <a class="btn bg-gradient-dark btn-sm mb-0" href="{{ route('qrcode-generator.show', ['id' => $student->id ]) }}">
+                                                        <a class="btn bg-gradient-dark btn-sm mb-0" id="generateQR" href="{{ route('qrcode-generator.show', ['id' => $student->id ]) }}">
                                                             <i class="material-icons text-sm">qr_code_2</i>&nbsp;
                                                             Generate QR
                                                         </a>
-                                                        {{-- <button class="btn btn-link text-dark px-1 mb-0">
-
-                                                        </button> --}}
                                                     </div>
                                                 </td>
                                             </tr>
-                                            @endforeach
-                                        @endisset
+                                        @endforeach
+                                    @endisset
                                 </tbody>
                             </table>
                         </div>

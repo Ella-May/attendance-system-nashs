@@ -79,7 +79,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">
+                            <button type="submit" id="createAccount" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">
                                 Submit
                             </button>
                         </form>
