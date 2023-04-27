@@ -47,17 +47,60 @@
                                                     <p class="text-center text-xs font-weight-bold mb-0">{{ $personnel->p_position}}</p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <div class="ms-auto">
-                                                        <a class="btn btn-link text-info px-1 mb-0" href="javascript:;">
-                                                            <i class="material-icons text-sm">visibility</i>
-                                                            View
-                                                        </a>
-                                                        <a class="btn btn-link text-dark px-1 mb-0" href="javascript:;">
+                                                    <button type="button" class="btn btn-link text-info px-1 mb-0"  data-bs-toggle="modal" data-bs-target="#viewModal{{ $personnel->id }}">
+                                                        <i class="material-icons text-sm">visibility</i>
+                                                        View
+                                                    </button>
+                                                    <div class="modal fade" id="viewModal{{ $personnel->id }}" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                          <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"><i class="material-icons text-m py-2">info</i> School Personnel Information</h5>
+                                                              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                              </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p class="text-m font-weight-bold mb-0" id="view_items_label">Name: {{ $personnel->p_lastname.', '.$personnel->p_firstname.' '.$personnel->p_midname }}</p>
+                                                                <p class="text-m font-weight-bold mb-0" id="view_items_label">Sex: {{ $personnel->p_sex }}</p>
+                                                                <p class="text-m font-weight-bold mb-0" id="view_items_label">Address: {{ $personnel->p_address }}</p>
+                                                                <p class="text-m font-weight-bold mb-0" id="view_items_label">Position: {{ $personnel->p_position}}</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                              <a class="btn btn-link text-dark text-gradient px-1 mb-0" data-bs-dismiss="modal">Close</a>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+
+                                                        {{-- <a class="btn btn-link text-dark px-1 mb-0" href="javascript:;">
                                                             <i class="material-icons text-sm">edit</i>
                                                             Edit
-                                                        </a>
-                                                        <a class="btn btn-link text-danger text-gradient px-1 mb-0" href="javascript:;">
-                                                            <i class="material-icons text-sm">delete</i>Delete</a>
+                                                        </a> --}}
+                                                        <button type="button" class="btn btn-link text-danger text-gradient px-1 mb-0" data-bs-toggle="modal" data-bs-target="#delModal{{ $personnel->id }}">
+                                                            <i class="material-icons text-sm">delete</i>Delete</button>
+                                                        </div>
+                                                        <div class="modal fade" id="delModal{{ $personnel->id }}" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                              <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"><i class="material-icons text-m py-2">warning</i> Are you sure do you want to delete?</h5>
+                                                                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                  </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p class="text-m font-weight-bold mb-0" id="del_items_label">Name: {{ $personnel->p_lastname.', '.$personnel->p_firstname.' '.$personnel->p_midname }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="del_items_label">Position {{ $personnel->p_position }}</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                  <a class="btn btn-link text-dark text-gradient px-1 mb-0" data-bs-dismiss="modal">Close</a>
+                                                                  <a class="btn btn-link text-danger text-gradient px-1 mb-0" wire:click="delete({{ $personnel->id }})"">
+                                                                    Delete</a>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>

@@ -39,4 +39,12 @@ class SchoolPersonnel extends Component
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function delete($id)
+    {
+        $personnel = SPersonnel::where('id', $id)->first();
+        $personnel->delete();
+
+        session()->flash('message', 'Student Information has been deleted successfully');
+    }
 }
