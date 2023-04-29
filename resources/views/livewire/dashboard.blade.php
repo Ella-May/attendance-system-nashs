@@ -3,7 +3,7 @@
       <!-- End Navbar -->
       <div class="container-fluid py-4">
           <div class="row">
-              <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+              {{-- <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                   <div class="card">
                       <div class="card-header p-3 pt-2">
                           <div
@@ -21,7 +21,7 @@
                               lask week</p>
                       </div>
                   </div>
-              </div>
+              </div> --}}
               <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                   <div class="card">
                       <div class="card-header p-3 pt-2">
@@ -30,14 +30,14 @@
                               <i class="material-icons opacity-10">person</i>
                           </div>
                           <div class="text-end pt-1">
-                              <p class="text-sm mb-0 text-capitalize">Today's Users</p>
-                              <h4 class="mb-0">2,300</h4>
+                              <p class="text-sm mb-0 text-capitalize">Present Students</p>
+                              <h4 class="mb-0">1, 675</h4>
                           </div>
                       </div>
                       <hr class="dark horizontal my-0">
                       <div class="card-footer p-3">
                           <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than
-                              lask month</p>
+                              yesterday</p>
                       </div>
                   </div>
               </div>
@@ -49,8 +49,8 @@
                               <i class="material-icons opacity-10">person</i>
                           </div>
                           <div class="text-end pt-1">
-                              <p class="text-sm mb-0 text-capitalize">New Clients</p>
-                              <h4 class="mb-0">3,462</h4>
+                              <p class="text-sm mb-0 text-capitalize">Absent Students</p>
+                              <h4 class="mb-0">24</h4>
                           </div>
                       </div>
                       <hr class="dark horizontal my-0">
@@ -60,7 +60,7 @@
                       </div>
                   </div>
               </div>
-              <div class="col-xl-3 col-sm-6">
+              {{-- <div class="col-xl-3 col-sm-6">
                   <div class="card">
                       <div class="card-header p-3 pt-2">
                           <div
@@ -78,9 +78,9 @@
                               yesterday</p>
                       </div>
                   </div>
-              </div>
+              </div> --}}
           </div>
-          <div class="row mt-4">
+          {{-- <div class="row mt-4">
               <div class="col-lg-4 col-md-6 mt-4 mb-4">
                   <div class="card z-index-2 ">
                       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
@@ -559,7 +559,7 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> --}}
   </div>
   @push('js')
   <script src="{{ asset('assets') }}/js/plugins/chartjs.min.js"></script>

@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label class="col col-form-label" for="formFile">Sex</label>
+                                <label class="col col-form-label" for="formFile">Gender</label>
                                 <div class="col-md-10">
                                     <select id="sex" class="form-select border px-2 text-dark" name="sex" wire:model="sex">
                                         <option value="Male">Male</option>

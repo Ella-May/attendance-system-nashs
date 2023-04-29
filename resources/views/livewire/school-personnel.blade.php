@@ -62,7 +62,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <p class="text-m font-weight-bold mb-0" id="view_items_label">Name: {{ $personnel->p_lastname.', '.$personnel->p_firstname.' '.$personnel->p_midname }}</p>
-                                                                <p class="text-m font-weight-bold mb-0" id="view_items_label">Sex: {{ $personnel->p_sex }}</p>
+                                                                <p class="text-m font-weight-bold mb-0" id="view_items_label">Gender: {{ $personnel->p_sex }}</p>
                                                                 <p class="text-m font-weight-bold mb-0" id="view_items_label">Address: {{ $personnel->p_address }}</p>
                                                                 <p class="text-m font-weight-bold mb-0" id="view_items_label">Position: {{ $personnel->p_position}}</p>
                                                             </div>

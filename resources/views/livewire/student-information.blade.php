@@ -204,7 +204,7 @@
                                                                 <div class="modal-body">
                                                                     <p class="text-m font-weight-bold mb-0" id="view_items_label">LRN: {{ $student->lrn }}</p>
                                                                     <p class="text-m font-weight-bold mb-0" id="view_items_label">Name: {{ $student->s_lastname.', '.$student->s_firstname.' '.$student->s_midname }}</p>
-                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Sex: {{ $student->s_sex }}</p>
+                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Gender: {{ $student->s_sex }}</p>
                                                                     <p class="text-m font-weight-bold mb-0" id="view_items_label">Address: {{ $student->s_address }}</p>
                                                                     <p class="text-m font-weight-bold mb-0" id="view_items_label">Student Contact Number: {{ $student->s_cnumber }}</p>
                                                                     <p class="text-m font-weight-bold mb-0" id="view_items_label">Guardian Name: {{ $student->g_name }}</p>
