@@ -41,13 +41,15 @@ class StuQRCodeGeneratorShow extends Component
                     ->size(200)->errorCorrection('H')
                     ->generate($this->lrn);
 
-        Storage::disk('public')->put($imageName, $image);
+        Storage::disk('public')->put('qr-code/'.$imageName, $image);
 
-        $type = 'png';
-        $image = imagecreatefrompng('storage/'.$imageName);
-        imagejpeg($image, 'storage/'.$imageName, 100);
+
+        $path = Storage::disk('public')->path('qr-code/' . $imageName);
+
+        $image = imagecreatefrompng($path);
+        imagejpeg($image, $path, 100);
         imagedestroy($image);
 
-        return response()->download('storage/'.$imageName, $imageName.'.'.$type, $headers)->deleteFileAfterSend();
+        return response()->download($path, $imageName.'.'.$type, $headers)->deleteFileAfterSend();
     }
 }
