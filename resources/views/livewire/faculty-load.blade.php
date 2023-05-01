@@ -24,75 +24,59 @@
                     </div>
                     <div class=" me-3 my-3 text-end">
                             <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                                <i class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New Subject
+                                <i class="material-icons text-sm">add</i>&nbsp;&nbsp;Assign Subject
                             </button>
-                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog modal-lg">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalCenterTitle">Add Faculty Load</h5>
+                                      <h5 class="modal-title" id="exampleModalCenterTitle">Add Subject Infomation</h5>
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                             <form method="POST" action="{{ route('faculty-load.store') }}" id="facultyLoadForm">
                                                 @csrf
-                                                <div class="mb-3 row">
-                                                    <div class="form-group">
-                                                        <label for="subname" class="row form-label">Subject Name</label>
-                                                        <input class="form-control border px-2" type="text" id="subname"
-                                                            name="subname" required>
-                                                    </div>
+                                                <div class="d-flex gap-2 flex-wrap">
+                                                    <fieldset class="flex-fill">
+                                                        <h6 class="mb-2">List of Faculty Members</h6>
+                                                        <div class="list-group">
+                                                            @isset($facultyMembers)
+                                                            @foreach ($facultyMembers as $member)
+                                                            <label for="{{ $member->id }}" class="mb-0 list-group-item list-group-item-action member">
+                                                                <div>
+                                                                    <input type="radio" id="{{ $member->id }}" name="member" class="d-none" value="{{ $member->id }}">
+                                                                    <p class="mb-0">
+                                                                        {{ $member->p_firstname }} {{ $member->p_lastname }}
+                                                                    </p>
+                                                                </div>
+                                                            </label>
+                                                            @endforeach
+                                                            @endisset
+                                                          </div>
+                                                    </fieldset>
+                                                    <fieldset class="flex-fill">
+                                                        <h6 class="mb-2">Subjects</h6>
+                                                        <div class="list-group">
+                                                        @isset($subjectInfos)
+                                                        @foreach ($subjectInfos as $info)
+                                                        <label for="{{ $info->id.$info->sub_name }}" class="list-group-item list-group-item-action subjectInfo mb-1">
+                                                                <input type="checkbox" id="{{ $info->id.$info->sub_name }}" name="subject[]" class="" value="{{ $info->id }}">
+                                                                <p class="fw-bold mb-0">
+                                                                    {{ $info->sub_name }}
+                                                                </p>
+                                                                <p class="mb-0">
+                                                                    {{ $info->sub_strand }}
+                                                                </p>
+                                                                <p class="mb-0">
+                                                                    {{ $info->sub_gradelvl }} - {{ $info->sub_section }}
+                                                                </p>
+                                                        </label>
+                                                        @endforeach
+                                                        @endisset
+                                                        </div>
+                                                    </fieldset>
                                                 </div>
-                                                <div class="mb-3 row">
-                                                    <div class="form-group">
-                                                        <label class="row form-label" for="subgradelvl">Grade Level</label>
-                                                        <select id="subgradelvl" class="form-select border px-2" name="subgradelvl" required>
-                                                            <option value="Grade 11">Grade 11</option>
-                                                            <option value="Grade 12">Grade 12</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 row">
-                                                    <div class="form-group">
-                                                        <label for="substrand" class="row form-label">Strand</label>
-                                                        <select id="substrand" class="form-select border px-2" name="substrand" required>
-                                                            <option value="Accountancy, Business and Management">Accountancy, Business and Management</option>
-                                                            <option value="General Academic Strand">General Academic Strand</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 row">
-                                                    <div class="form-group">
-                                                        <label for="subsection" class="row form-label">Section</label>
-                                                        <input class="form-control border px-2" type="text" id="subsection" name="subsection" required>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 row">
-                                                    <div class="form-group">
-                                                        <label class="row form-label" for="subday">Day</label>
-                                                        <select id="subday" class="form-select border px-2" name="subday" required>
-                                                            <option value="Monday">Monday</option>
-                                                            <option value="Tuesday">Tuesday</option>
-                                                            <option value="Wednesday">Wednesday</option>
-                                                            <option value="Thursday">Thursday</option>
-                                                            <option value="Friday">Friday</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3 row">
-                                                    <div class="form-group">
-                                                        <label for="subtimestart" class="row form-label">Subject Time Start</label>
-                                                        <input class="form-control border px-2" type="time" id="subtimestart"
-                                                            name="subtimestart" required>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <div class="form-group">
-                                                        <label for="subtimeend" class="row form-label">Subject Time End</label>
-                                                        <input class="form-control border px-2" type="time" id="subtimeend"
-                                                            name="subtimeend" required>
-                                                    </div>
-                                                </div>
+
                                             </form>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -108,10 +92,13 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center align-middle text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">
-                                            Subject Name
+                                            Personnel Name
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Strand
+                                            Subject
+                                        </th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Subject Strand
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Grade Level and Section
@@ -120,88 +107,51 @@
                                             Day
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Subject Time
+                                            Time Start
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Action
+                                            Time End
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        @isset($subjects)
-                                            @foreach ($subjects as $subject)
+                                        @isset($facultyLoads)
+                                            @foreach ($facultyLoads as $load)
                                             <tr>
                                                 <td class="align-middle text-center text-sm">
-                                                    <p class="text-xs font-weight-bold mb-0">{{ $subject->sub_name }}</p>
+                                                    <p class="text-xs font-weight-bold mb-0">
+                                                        {{ $load->schoolPersonnel->p_firstname }} {{ $load->schoolPersonnel->p_midname }} {{ $load->schoolPersonnel->p_lastname }}
+                                                    </p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <p class="text-xs font-weight-bold mb-0">{{ $subject->sub_strand }}</p>
+                                                    <p class="text-xs font-weight-bold mb-0">
+                                                        {{ $load->subjectInfo->sub_name }}
+                                                    </p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <p class="text-xs font-weight-bold mb-0">{{ $subject->sub_gradelvl.' - '.$subject->sub_section }}</p>
+                                                    <p class="text-xs font-weight-bold mb-0">
+                                                        {{ $load->subjectInfo->sub_strand }}
+                                                    </p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <p class="text-xs font-weight-bold mb-0">{{ $subject->sub_day }}</p>
+                                                    <p class="text-xs font-weight-bold mb-0">
+                                                        {{ $load->subjectInfo->sub_gradelvl }} {{ $load->subjectInfo->sub_section }}
+                                                    </p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <p class="text-xs font-weight-bold mb-0">{{ $subject->sub_timestart.' - '.$subject->sub_timeend }}</p>
+                                                    <p class="text-xs font-weight-bold mb-0">
+                                                        {{ $load->subjectInfo->sub_day }}
+                                                    </p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <div class="ms-auto text-end">
-                                                        <button type="button" class="btn btn-link text-info px-1 mb-0"  data-bs-toggle="modal" data-bs-target="#viewModal{{ $subject->id }}">
-                                                            <i class="material-icons text-sm">visibility</i>
-                                                            View
-                                                        </button>
-                                                        <div class="modal fade" id="viewModal{{ $subject->id }}" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                              <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title"><i class="material-icons text-m py-2">info</i> Faculty Load Information</h5>
-                                                                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                  </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Subject Name: {{ $subject->sub_name }}</p>
-                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Strand: {{ $subject->sub_strand }}</p>
-                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Grade Level & Section: {{ $subject->sub_gradelvl.' - '.$subject->sub_section }}</p>
-                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Subject Day: {{ $subject->sub_day }}</p>
-                                                                    <p class="text-m font-weight-bold mb-0" id="view_items_label">Subject Time: {{ $subject->sub_timestart.' - '.$subject->sub_timeend }}</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                  <a class="btn btn-link text-dark text-gradient px-1 mb-0" data-bs-dismiss="modal">Close</a>
-                                                                </div>
-                                                              </div>
-                                                            </div>
-                                                        </div>
-                                                        <a class="btn btn-link text-dark px-1 mb-0" href="{{ route('faculty-load.edit', ['id' => $subject->id ]) }}">
-                                                            <i class="material-icons text-sm">edit</i>
-                                                            Edit
-                                                        </a>
-                                                        <button type="button" class="btn btn-link text-danger text-gradient px-1 mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                            <i class="material-icons text-sm">delete</i>Delete</button>
-                                                        </div>
-                                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                              <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title"><i class="material-icons text-m py-2">warning</i> Are you sure do you want to delete?</h5>
-                                                                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                  </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p class="text-m font-weight-bold mb-0" id="del_items_label">Subject Name: {{ $subject->sub_name }}</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                  <a class="btn btn-link text-dark text-gradient px-1 mb-0" data-bs-dismiss="modal">Close</a>
-                                                                  <a class="btn btn-link text-danger text-gradient px-1 mb-0" wire:click="delete({{ $subject->id }})"">
-                                                                    Delete</a>
-                                                                </div>
-                                                              </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <p class="text-xs font-weight-bold mb-0">
+                                                        {{ date('h:i A', strtotime($load->subjectInfo->sub_timestart ))}}
+                                                    </p>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <p class="text-xs font-weight-bold mb-0">
+                                                        {{ date('h:i A', strtotime($load->subjectInfo->sub_timeend)) }}
+                                                    </p>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -215,3 +165,24 @@
         </div>
     </div>
 </div>
+<script>
+   const clickableDivs = document.querySelectorAll('.member');
+   const subjectInfos = document.querySelectorAll('.subjectInfo');
+
+   subjectInfos.forEach((info) => {
+        info.addEventListener('click', function(e) {
+            // info.classList.add('active');
+           info.firstElementChild.checked ? info.classList.add('active') : info.classList.remove('active');
+
+        });
+    })
+
+    clickableDivs.forEach(function(div) {
+        div.addEventListener('click', function() {
+            clickableDivs.forEach(function(div) {
+                div.classList.remove('active');
+                });
+            div.classList.add('active');
+        });
+    });
+</script>

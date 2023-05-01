@@ -48,7 +48,6 @@
 <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
 <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="{{ asset('assets') }}/js/plugins/smooth-scrollbar.min.js"></script>
-<script src="{{ asset('assets') }}/js/instascan/instascan.min.js"></script>
 @stack('js')
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
@@ -58,45 +57,6 @@
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
-
-</script>
-
-<script>
-    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-    const csrf = document.querySelector('meta[name="csrf-token"]').content;
-
-    const buttonScanner = document.getElementById('scanQR');
-
-    buttonScanner.addEventListener('click', function() {
-        // If the camera scan the QR Code this will run
-        scanner.addListener('scanQR', function (content) {
-            console.log(content);
-
-            // Request
-            let formData = new FormData();
-            formData.append('time', Date.now());
-            formData.append('lrn', content);
-
-            fetch('https://attendance-system.test/attendance-report', {
-                method: "POST",
-                headers: {
-                    "X-CSRF-TOKEN": csrf,
-                },
-                body: formData
-            })
-        });
-
-        // This will start the camera
-        Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-            scanner.start(cameras[0]);
-        } else {
-            console.error('No cameras found.');
-        }
-        }).catch(function (e) {
-            console.error(e);
-        });
-    })
 
 </script>
 

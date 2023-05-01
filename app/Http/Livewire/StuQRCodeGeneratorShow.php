@@ -21,8 +21,8 @@ class StuQRCodeGeneratorShow extends Component
 
     public function render()
     {
-        $qrcode = QrCode::size(300)->generate($this->lrn);
         $student = $this->studentID;
+        $qrcode = QrCode::size(300)->generate($student);
         $students = StudentInformation::where('id', $student)->first();
         $data = compact('qrcode', 'student', 'students');
         return view('livewire.stu-q-r-code-generator-show', $data);
@@ -38,17 +38,17 @@ class StuQRCodeGeneratorShow extends Component
         $headers    = array('Content-Type' => ['png','svg','eps']);
         $type       = 'png';
         $image      = QrCode::format('png')
-                    ->size(200)->errorCorrection('H')
-                    ->generate($this->lrn);
+                    ->size(300)->errorCorrection('H')
+                    ->generate($studInfo->id);
 
         Storage::disk('public')->put('qr-code/'.$imageName, $image);
 
 
         $path = Storage::disk('public')->path('qr-code/' . $imageName);
 
-        $image = imagecreatefrompng($path);
-        imagejpeg($image, $path, 100);
-        imagedestroy($image);
+        $imageCreate = imagecreatefrompng($path);
+        // imagejpeg($imageCreate, $path, 100);
+        imagedestroy($imageCreate);
 
         return response()->download($path, $imageName.'.'.$type, $headers)->deleteFileAfterSend();
     }

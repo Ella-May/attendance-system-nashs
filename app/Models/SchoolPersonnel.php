@@ -20,4 +20,14 @@ class SchoolPersonnel extends Model
         'p_cnumber',
         'p_position'
     ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'userID');
+    }
+
+    public function subjects()
+    {
+        return $this->hasMany(FacultyLoad::class, 'school_perID', 'id');
+    }
 }

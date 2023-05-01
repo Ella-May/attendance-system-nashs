@@ -27,6 +27,7 @@ class CreateAccount extends Component
                     'name' => $request->firstname.' '.$request->lastname,
                     'password' => ('secret')
                 ]);
+
                 SchoolPersonnel::create([
                     'userID' => $user->id,
                     'p_firstname' => $request->firstname,
@@ -35,7 +36,10 @@ class CreateAccount extends Component
                     'p_sex' => $request->sex,
                     'p_position' => $request->position
                 ]);
+
+                $user->assignRole($request->position);
             });
+
             return back()->with('success', 'Account created');
         }
         catch(QueryException $e)

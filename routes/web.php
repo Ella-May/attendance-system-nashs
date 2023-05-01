@@ -9,8 +9,6 @@ use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\ResetPassword;
 use App\Http\Livewire\Billing;
 use App\Http\Livewire\CreateAccount;
-use App\Http\Livewire\FacultyLoad;
-use App\Http\Livewire\FacultyLoadEdit;
 use App\Http\Livewire\QRCodeScanner;
 use App\Http\Livewire\SchoolPersonnel;
 use App\Http\Livewire\StudentInformation;
@@ -22,10 +20,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\ExampleLaravel\UserManagement;
 use App\Http\Livewire\ExampleLaravel\UserProfile;
+use App\Http\Livewire\FacultyLoad;
 use App\Http\Livewire\Notifications;
 use App\Http\Livewire\Profile;
 use App\Http\Livewire\StaticSignIn;
 use App\Http\Livewire\StaticSignUp;
+use App\Http\Livewire\SubjectInfo;
+use App\Http\Livewire\SubjectInfoEdit;
 use App\Http\Livewire\Tables;
 use GuzzleHttp\Middleware;
 
@@ -71,15 +72,21 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('student-information', [StudentInformation::class, 'store'])->name('student-information.store');
     Route::get('school-personnel', SchoolPersonnel::class)->name('school-personnel');
     Route::post('school-personnel', [SchoolPersonnel::class, 'store'])->name('school-personnel.store');
-    Route::get('faculty-load', FacultyLoad::class)->name('faculty-load');
-    Route::get('faculty-load/{id}', FacultyLoadEdit::class)->name('faculty-load.edit');
-    Route::post('faculty-load', [FacultyLoad::class, 'store'])->name('faculty-load.store');
+    Route::get('subject-info', SubjectInfo::class)->name('subject-info');
+    Route::get('subject-info/{id}', SubjectInfoEdit::class)->name('subject-info.edit');
+    Route::post('subject-info', [SubjectInfo::class, 'store'])->name('subject-info.store');
+    Route::delete('subject-info/{id}', [SubjectInfo::class, 'delete'])->name('subject-info.delete');
     Route::get('attendance-report', AttendanceReport::class)->name('attendance-report');
     Route::post('attendance-report', [AttendanceReport::class, 'store'])->name('attendance-report.store');
     Route::get('qrcode-generator', StuQRCodeGenerator::class)->name('qrcode-generator');
     Route::get('qrcode-generator/{id}', StuQRCodeGeneratorShow::class)->name('qrcode-generator.show');
     Route::get('qrcode-generator/{id}/download', [StuQRCodeGeneratorShow::class, 'download'])->name('qrcode-generator.download');
     Route::get('qrcode-scanner', QRCodeScanner::class)->name('qrcode-scanner');
+    Route::get('qrcode-scanner', QRCodeScanner::class)->name('qrcode-scanner');
     // Route::get('qrcode', function(){ return QrCode::size(200)->generate('A basic example of Qr Code'); });
+
+    Route::get('faculty-load', FacultyLoad::class)->name('faculty-load');
+    Route::post('faculty-load', [FacultyLoad::class, 'store'])->name('faculty-load.store');
+
 });
 

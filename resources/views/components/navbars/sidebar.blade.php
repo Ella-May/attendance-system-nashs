@@ -120,6 +120,15 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'subject-info' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('subject-info') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">article</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Subject Information</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'faculty-load' ? ' active bg-gradient-primary' : '' }} "
                     href="{{ route('faculty-load') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

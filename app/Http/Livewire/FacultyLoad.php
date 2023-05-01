@@ -2,19 +2,25 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\FacultyLoad as ModelsFacultyLoad;
+use App\Models\SchoolPersonnel;
+use App\Models\SubjectInfo;
 use Illuminate\Database\QueryException;
-use Livewire\Component;
-use Illuminate\Support\Facades\DB;
-use App\Models\FacultyLoad as FLoad;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
 class FacultyLoad extends Component
 {
     public function render()
     {
-        $subjects = FLoad::get();
-        $data = compact('subjects');
+        $facultyMembers = SchoolPersonnel::where('p_position', 'Faculty Member')->get();
+        $subjectInfos = SubjectInfo::get();
+
+        $facultyLoads = ModelsFacultyLoad::get();
+
+        $data = compact('facultyMembers', 'subjectInfos', 'facultyLoads');
+
         return view('livewire.faculty-load', $data);
     }
 
@@ -22,30 +28,30 @@ class FacultyLoad extends Component
     {
         try
         {
-            DB::transaction(function () use ($request){
-                FLoad::create([
-                    'sub_name' => $request->subname,
-                    'sub_gradelvl' => $request->subgradelvl,
-                    'sub_strand' => $request->substrand,
-                    'sub_section' => $request->subsection,
-                    'sub_day' => $request->subday,
-                    'sub_timestart' => $request->subtimestart,
-                    'sub_timeend' => $request->subtimeend
-                ]);
+            $schoolPersonnel = SchoolPersonnel::where('id', $request->member)->first();
+            $addSubject = DB::transaction(function() use ($request) {
+                if(count($request->subject) > 0)
+                {
+                    foreach($request->subject as $subject)
+                    {
+                        ModelsFacultyLoad::create([
+                            'school_perID' => $request->member,
+                            'subject_infoID' => intval($subject),
+                        ]);
+                    }
+                };
+
+                return true;
             });
-            return back()->with('success', 'Faculty Load added successfully');
-        }
-        catch(QueryException $e)
+
+            if($addSubject)
+            {
+                return back()->with('success', "Subject for $schoolPersonnel->p_firstname $schoolPersonnel->p_lastname has been added.");
+            }
+
+        } catch(QueryException $e)
         {
             return back()->with('error', $e->getMessage());
         }
-    }
-
-    public function delete($id)
-    {
-        $subject = Fload::where('id', $id)->first();
-        $subject->delete();
-
-        session()->flash('message', 'Faculty Load has been deleted successfully');
     }
 }

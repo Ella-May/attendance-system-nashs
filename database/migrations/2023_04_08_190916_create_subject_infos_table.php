@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('faculty_loads', function (Blueprint $table) {
-            $table->id();
+        Schema::create('subject_infos', function (Blueprint $table) {
+            $table->id()->from(4000);
             $table->string('sub_name');
             $table->enum('sub_gradelvl', ['Grade 11', 'Grade 12']);
             $table->string('sub_strand');
             $table->string('sub_section');
             $table->enum('sub_day', ['Monday', 'Tuesday', 'Wednesday','Thursday', 'Friday']);
-            $table->time('sub_timestart');
-            $table->time('sub_timeend');
+            $table->dateTime('sub_timestart');
+            $table->dateTime('sub_timeend');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('faculty_loads');
+        Schema::dropIfExists('subject_infos');
     }
 };

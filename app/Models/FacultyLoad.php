@@ -8,16 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class FacultyLoad extends Model
 {
     use HasFactory;
+
     protected $table = 'faculty_loads';
-    protected $primaryKey = 'id';
+
     protected $fillable = [
-        'perID',
-        'sub_name',
-        'sub_gradelvl',
-        'sub_strand',
-        'sub_section',
-        'sub_day',
-        'sub_timestart',
-        'sub_timeend'
+        'school_perID',
+        'subject_infoID',
     ];
+
+    public function schoolPersonnel()
+    {
+        return $this->hasOne(SchoolPersonnel::class, 'id', 'school_perID');
+    }
+
+    public function subjectInfo()
+    {
+        return $this->hasOne(SubjectInfo::class, 'id', 'subject_infoID');
+    }
 }
